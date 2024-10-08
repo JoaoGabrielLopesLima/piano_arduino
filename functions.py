@@ -1,5 +1,8 @@
+# Usado para pressionar as teclas
 import keyboard
+# Usado para abrir o navegador
 import selenium.webdriver as webdriver
+# Usado para realizar comunicação com o arduino
 import serial
 
 def open_site(browser:str | None = 'chrome', url:str | None = 'https://www.onlinepianist.com/virtual-piano'):
@@ -39,7 +42,7 @@ def connect_terminal(port:str, baudrate:int):
     arduino = serial.Serial(port, baudrate)
     return arduino
 
-def read_terminal(terminal):
+def read_terminal(terminal:serial.Serial):
     data = terminal.readline().decode().strip()
     return data
 
