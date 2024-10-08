@@ -2,7 +2,7 @@ import libs.keyboard as keyboard
 import libs.selenium.webdriver as webdriver
 import libs.serial as serial
 
-def open_site(browser:str | None = 'chrome', url:str | None = 'https://www.google.com'):
+def open_site(browser:str | None = 'chrome', url:str | None = 'https://www.onlinepianist.com/virtual-piano'):
     '''
     Abre um navegador no site especificado por meio dos parâmetros
     ______________________
@@ -29,7 +29,7 @@ def open_site(browser:str | None = 'chrome', url:str | None = 'https://www.googl
 
 
 def click_release_key(key:str, note:int, serial_data:str):
-    if serial_data[note]:
+    if serial_data[note] == 1:
         keyboard.press(key)
     else:
         keyboard.release(key)
@@ -38,7 +38,7 @@ def connect_terminal(port:str, baudrate:int):
     arduino = serial.Serial(port, baudrate)
     return arduino
 
-def read_terminal(terminal:serial.Serial):
+def read_terminal(terminal):
     data = terminal.readline().decode().strip()
     return data
 
