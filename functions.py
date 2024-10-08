@@ -17,13 +17,5 @@ def open_site(browser:str = 'chrome', url:str='https://www.google.com'):
         driver.get(url)
     else:
         raise ValueError("Navegador não suportado! escolha entre Chrome, Microsoft Edge, Safari ou FireFox")
-try:    
-    driver = webdriver.Chrome()
-    driver.get('https://www.google.com')
-except:
-    pass
-finally:
-    ...
 
-while True:
-    print('oi')
+
