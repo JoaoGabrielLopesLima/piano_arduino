@@ -1,6 +1,6 @@
-import libs.keyboard as keyboard
-import libs.selenium.webdriver as webdriver
-import libs.serial as serial
+import keyboard
+import selenium.webdriver as webdriver
+import serial
 
 def open_site(browser:str | None = 'chrome', url:str | None = 'https://www.onlinepianist.com/virtual-piano'):
     '''
@@ -29,12 +29,13 @@ def open_site(browser:str | None = 'chrome', url:str | None = 'https://www.onlin
 
 
 def click_release_key(key:str, note:int, serial_data:str):
-    if serial_data[note] == 1:
+    if serial_data[note] == "1":
         keyboard.press(key)
     else:
         keyboard.release(key)
 
 def connect_terminal(port:str, baudrate:int):
+    global arduino
     arduino = serial.Serial(port, baudrate)
     return arduino
 
